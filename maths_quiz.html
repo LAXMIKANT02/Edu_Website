@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Quiz</title>
+    <style>
+        /* Add CSS styles for quiz layout */
+        .question{
+            display: inline-flex;
+            padding: 10px;
+            margin: 10px;
+        }
+        .answer {
+            background-color: rgb(255, 216, 20);
+            margin: 20px;
+            border: none;
+            color: rgb(36, 34, 34);
+            border-radius: 40px;
+            font-size: 18px;
+            font-family: arial;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 10px 25px;
+            transition: opacity, box-shadow 0.15s;
+        }
+        .answer:active {
+            padding: 8px 18px;
+            transition: 0.10s;
+            box-shadow: none;
+            color: rgb(50, 18, 18);
+            font-size: 18px;
+        }
+        .answer:hover {
+            transition: 0.35s;
+            opacity: 80%;
+            box-shadow: 2px 2px 10px rgb(99, 31, 31);
+        }
+        .results {
+            display: inline-flex;
+            padding: 5px;
+            color: rgb(77, 25, 25);
+            margin: 20px 10px;
+            font-weight: bold;
+            font-size: large;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Math Quiz</h2>
+        <p>Answer the following questions:</p>
+        <div style="margin: 12px; border: 2px;" id="questions">
+            <!-- Questions will be added dynamically using JavaScript -->
+        </div>
+        <button class="answer" onclick="submitAnswers()">Submit Answers</button>
+        <div class="results" id="results"></div>
+    </div>
+
+    <script>
+        // Function to generate random number between min and max
+        function getRandomNumber(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // Function to generate random math questions
+        function generateRandomQuestions() {
+            const operations = ['+', '-', '*', '/'];
+            const questions = [];
+
+            for (let i = 0; i < 10; i++) {
+                const num1 = getRandomNumber(1, 10);
+                const num2 = getRandomNumber(1, 10);
+                const operation = operations[getRandomNumber(0, operations.length - 1)];
+                let question, answer;
+
+                switch (operation) {
+                    case '+':
+                        question = `${num1} + ${num2} =`;
+                        answer = (num1 + num2).toString();
+                        break;
+                    case '-':
+                        question = `${num1} - ${num2} =`;
+                        answer = (num1 - num2).toString();
+                        break;
+                    case '*':
+                        question = `${num1} * ${num2} =`;
+                        answer = (num1 * num2).toString();
+                        break;
+                    case '/':
+                        question = `${num1 * num2} / ${num2} =`;
+                        answer = num1.toString();
+                        break;
+                }
+
+                questions.push({ question, answer });
+            }
+
+            return questions;
+        }
+
+        // Array of quiz questions
+        const questions = generateRandomQuestions();
+
+        // Function to generate quiz questions
+        function generateQuiz() {
+            const quizContainer = document.getElementById('questions');
+            let quizHTML = '';
+
+            questions.forEach((question, index) => {
+                quizHTML += `<div class="question">
+                                <label>${index + 1}. ${question.question}</label>
+                                <input type="text" id="answer${index}">
+                            </div>`;
+            });
+
+            quizContainer.innerHTML = quizHTML;
+        }
+
+        // Function to check answers
+        function submitAnswers() {
+            let score = 0;
+            questions.forEach((question, index) => {
+                const userAnswer = document.getElementById(`answer${index}`).value.trim();
+                if (userAnswer.toLowerCase() === question.answer.toLowerCase()) {
+                    score++;
+                }
+            });
+
+            const resultsContainer = document.getElementById('results');
+            resultsContainer.innerHTML = `<p>You scored ${score} out of ${questions.length}</p>`;
+        }
+
+        // Call generateQuiz function when the page loads
+        window.onload = generateQuiz;
+    </script>
+</body>
+</html>

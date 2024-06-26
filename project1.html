@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primary Education Website</title>
+    <style>    
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffccb0;
+}
+header {
+    background-color: #f25945;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+nav {
+    background-color: #f47e4f;
+    overflow: hidden;
+}
+nav a {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    font-size: 18px;
+    transition: background-color 0.3s, color 0.3s;
+}
+nav a:hover, nav a.active {
+    background-color: #ddd;
+    color: black;
+}
+section {
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+}
+footer {
+    background-color: #db6d4f;
+    color: rgb(224, 195, 195);
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.carousel {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.carousel img {
+    height: 180px;
+    width: 180px;
+    border-radius: 25px;
+    display: none;
+}
+.carousel img.active {
+    display: block;
+}
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+.contact-form label, .contact-form input, .contact-form textarea {
+    margin-bottom: 10px;
+}
+.contact-form input, .contact-form textarea {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+.send{
+    background-color: rgb(241, 124, 66);
+            margin: 20px;
+            border: none;
+            color: rgb(36, 34, 34);
+            border-radius: 40px;
+            font-size: 18px;
+            font-family: arial;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 10px 25px;
+            transition: opacity, box-shadow 0.15s;
+}
+.send:hover{
+            transition: 0.35s;
+            opacity: 80%;
+            box-shadow: 2px 2px 10px rgb(99, 31, 31);
+        
+}
+.quiz-links {
+    display:inline-block;
+    flex-direction: column;
+    gap: 50px;
+}
+.quiz-links a,.quiz-links button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #c02f19;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    display:inline-flex;
+    border: 2px;
+    border-radius: 15px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.quiz-links a:hover, .quiz-links button:hover {
+ transition: 0.35s;
+            opacity: 80%;
+            box-shadow: 2px 2px 10px rgb(99, 31, 31);
+}
+    </style>
+</head>
+
+
+<body>
+    <header>
+        <h1>Primary Education Website</h1>
+    </header>
+    <nav>
+        <a href="#" id="home" class="active">Home</a>
+        <a href="#" id="about">About</a>
+        <a href="#" id="courses">Courses</a>
+        <a href="#" id="contact">Contact</a>
+    </nav>
+    <section id="content">
+        <h2>Welcome to Our Primary Education Website</h2>
+        <div class="carousel">
+            <img style="width: 200px; border-radius: 5px; margin: 15px;" src="e3.jpg" alt="Education Image 1" class="active">
+            <img style="width: 200px; border-radius: 5px; margin: 15px;" src="e2.jpg" alt="Education Image 2">
+            <img style="width: 200px; border-radius: 5px; margin: 15px;" src="e1.jpg" alt="Education Image 3">
+        </div>
+        <p>This website is dedicated to providing quality education for primary level students.</p>
+        <p>We believe that the foundation of a successful education begins in primary school. We are dedicated to nurturing young minds and fostering a love for learning that will last a lifetime.</p>
+        
+        <h3>Our Educational Philosophy</h3>
+        <p>Our educational philosophy is centered around the holistic development of each child. We focus not only on academic excellence but also on social, emotional, and physical growth. We believe in creating a positive and inclusive learning environment where every child feels valued and supported.</p>
+        
+        <h3>Interactive and Engaging Learning</h3>
+        <p>We understand that young children learn best through play and hands-on activities. Our curriculum is designed to be interactive and engaging, encouraging students to explore, ask questions, and discover new interests. From science experiments to creative arts, we provide a diverse range of learning experiences that cater to different learning styles.</p>
+        
+        <h3>Supportive Community</h3>
+        <p>We pride ourselves on our strong sense of community. Our teachers, parents, and students work together to create a supportive and collaborative environment. We believe that education is a partnership between the school and families, and we encourage active parent involvement in our programs and activities.</p>
+        
+        <h3>Why Choose Our School?</h3>
+        <ul>
+            <li>Experienced and passionate teachers who are dedicated to each student's success.</li>
+            <li>A safe and nurturing environment where children can thrive.</li>
+            <li>Small class sizes that allow for personalized attention and tailored instruction.</li>
+            <li>A rich and diverse curriculum that includes academics, arts, and physical education.</li>
+            <li>State-of-the-art facilities and resources that enhance the learning experience.</li>
+        </ul>
+        
+        <h3>Join Us on a Journey of Learning and Discovery</h3>
+        <p>We invite you to join our educational community and embark on a journey of learning and discovery. Together, we can help your child reach their full potential and build a strong foundation for future success.</p>
+    `;
+    </section>
+  
+    <footer>
+        &copy; 2024 Primary Education Website
+    </footer>
+    <script>
+        // JavaScript for handling navigation
+        document.querySelectorAll("nav a").forEach(function(navLink) {
+            navLink.addEventListener("click", function() {
+                document.querySelectorAll("nav a").forEach(function(link) {
+                    link.classList.remove("active");
+                });
+                this.classList.add("active");
+                var content = document.getElementById("content");
+                if (this.id === "home") {
+                    document.getElementById("home").addEventListener("click", function() {
+    document.getElementById("content").innerHTML = `
+        <h2>Welcome to Our Primary Education Website</h2>
+        <div class="carousel">
+            <img src="e3.jpg" alt="Education Image 1" class="active">
+            <img src="e2.jpg" alt="Education Image 2">
+            <img src="e1.jpg" alt="Education Image 3">
+        </div>
+        <p>At our school, we believe that the foundation of a successful education begins in primary school. We are dedicated to nurturing young minds and fostering a love for learning that will last a lifetime.</p>
+        
+        <h3>Our Educational Philosophy</h3>
+        <p>Our educational philosophy is centered around the holistic development of each child. We focus not only on academic excellence but also on social, emotional, and physical growth. We believe in creating a positive and inclusive learning environment where every child feels valued and supported.</p>
+        
+        <h3>Interactive and Engaging Learning</h3>
+        <p>We understand that young children learn best through play and hands-on activities. Our curriculum is designed to be interactive and engaging, encouraging students to explore, ask questions, and discover new interests. From science experiments to creative arts, we provide a diverse range of learning experiences that cater to different learning styles.</p>
+        
+        <h3>Supportive Community</h3>
+        <p>We pride ourselves on our strong sense of community. Our teachers, parents, and students work together to create a supportive and collaborative environment. We believe that education is a partnership between the school and families, and we encourage active parent involvement in our programs and activities.</p>
+        
+        <h3>Why Choose Our School?</h3>
+        <ul>
+            <li>Experienced and passionate teachers who are dedicated to each student's success.</li>
+            <li>A safe and nurturing environment where children can thrive.</li>
+            <li>Small class sizes that allow for personalized attention and tailored instruction.</li>
+            <li>A rich and diverse curriculum that includes academics, arts, and physical education.</li>
+            <li>State-of-the-art facilities and resources that enhance the learning experience.</li>
+        </ul>
+        
+        <h3>Join Us on a Journey of Learning and Discovery</h3>
+        <p>We invite you to join our educational community and embark on a journey of learning and discovery. Together, we can help your child reach their full potential and build a strong foundation for future success.</p>
+    `;
+    initCarousel();  // Reinitialize the carousel after updating the content
+});
+
+                    initCarousel();
+                } else if (this.id === "about") {
+                    document.getElementById("about").addEventListener("click", function() {
+    document.getElementById("content").innerHTML = `
+        <h2>About Us</h2>
+        <p>Welcome to our Primary Education Website! We are dedicated to providing a strong foundation for young learners, fostering a love for learning, and preparing them for a bright future.</p>
+        
+        <h3>Our Mission</h3>
+        <p>Our mission is to deliver high-quality education that empowers students to reach their full potential. We aim to create a nurturing and stimulating environment where children can grow intellectually, socially, and emotionally.</p>
+        
+        <h3>Our Values</h3>
+        <ul>
+            <li><strong>Excellence:</strong> We strive for excellence in everything we do, from our teaching methods to our learning materials.</li>
+            <li><strong>Inclusivity:</strong> We believe in providing an inclusive education that respects and values diversity.</li>
+            <li><strong>Integrity:</strong> We conduct ourselves with integrity, fostering honesty and transparency in our interactions.</li>
+            <li><strong>Collaboration:</strong> We encourage collaboration among students, teachers, and parents to create a supportive learning community.</li>
+            <li><strong>Innovation:</strong> We embrace innovative teaching techniques and technologies to enhance the learning experience.</li>
+        </ul>
+        
+        <h3>Our Approach</h3>
+        <p>We use a holistic approach to education that focuses on the overall development of each child. Our curriculum is designed to be engaging, interactive, and adaptable to the needs of individual learners. We integrate a variety of teaching methods, including hands-on activities, project-based learning, and digital tools, to make learning enjoyable and effective.</p>
+        
+        <h3>Meet Our Team</h3>
+        <p>Our team is composed of experienced educators who are passionate about teaching and dedicated to the success of our students. Each member of our team brings a unique set of skills and expertise, ensuring that we provide a well-rounded education. Our teachers are not just educators; they are mentors and role models who inspire and guide our students every day.</p>
+        
+        <h3>Why Choose Us?</h3>
+        <p>Choosing the right school for your child is a critical decision. Here are some reasons why our primary education program stands out:</p>
+        <ul>
+            <li>We offer a safe and nurturing environment where children feel valued and supported.</li>
+            <li>Our small class sizes allow for personalized attention and tailored instruction.</li>
+            <li>We encourage active parent involvement and foster a strong school-community partnership.</li>
+            <li>Our extracurricular programs provide opportunities for students to explore their interests and develop new skills.</li>
+            <li>We are committed to continuous improvement and regularly update our curriculum to reflect the latest educational research and best practices.</li>
+        </ul>
+        
+        <h3>Contact Us</h3>
+        <p>If you have any questions or would like to learn more about our school, please don't hesitate to contact us. We look forward to welcoming you to our educational community!</p>
+    `;
+});
+    } else if (this.id === "courses") {
+                    content.innerHTML = `
+                        <h2>Courses</h2>
+                        <div class="container">
+      
+         <div class="quiz-links">
+           <a href="quiz.html" target="_blank">Quiz Section</a>
+            <a href="https://www.crazygames.com/" target="_blank"> Free Games</a>
+            <a href="https://chatgpt.com/" target="_blank"> Doubt Section</a>
+            <a href="https://www.funbrain.com/content/cgi-bin/wd.cgi?A1=showcat&A2=1" target="_blank"> Learn With Fun  </a>
+        </div>
+    
+                        <p>"Choose any one of the above area you are intrested in !!"</p>`;
+                        
+                } else if (this.id === "contact") {
+                    content.innerHTML = `
+                        <h2>Contact Us</h2>
+                        <form class="contact-form">
+                            <label for="name">Name:</label>
+                            <input type="text" id="name" name="name" required>
+                            <label for="email">E-mail:</label>
+                            <input type="email" id="email" name="email" required>
+                            <label for="message">Write your queries below:</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                            <button class="send" type="submit">Send</button>
+                        </form>`;
+                }
+            });
+        });
+
+        // JavaScript for carousel
+        function initCarousel() {
+            let currentSlide = 0;
+            const slides = document.querySelectorAll('.carousel img');
+            setInterval(() => {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }, 3000);
+        }
+
+        // Initialize carousel on page load
+        document.addEventListener("DOMContentLoaded", initCarousel);
+    </script>
+</body>
+</html>
